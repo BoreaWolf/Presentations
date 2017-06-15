@@ -1,0 +1,198 @@
+% Options for format can be included here
+\documentclass[a0paper]{tikzposter}
+
+\usepackage[english]{babel}
+
+% Removing the watermark: still yet to decide if I really want to remove it
+%	\tikzposterlatexaffectionproofoff
+
+% Title, Author, Institute
+\title{Data driven diagnosis of complex systems}
+\author{Riccardo Orizio, Prof. Gregory Provan}
+\institute{University College Cork}
+\titlegraphic{\includegraphics[width=0.13\textwidth]{./Images/logo_ucc.png}}
+
+% Title settings
+% Rescaled all text by one factor in comparison to the original settings
+\settitle
+{
+	\centering
+	\vbox
+	{
+		\@titlegraphic \\[\TP@titlegraphictotitledistance]
+		\centering
+		\color{titlefgcolor}
+		{\bfseries \huge \sc \@title \par}
+		\vspace*{1em}
+		{\LARGE \@author \par}
+		\vspace*{1em}
+		{\Large \@institute}
+	}
+}
+
+% Choose Layout
+%	\usetheme{Default}
+%	\usetheme{Rays}			%	<--
+%	\usetheme{Basic}
+%	\usetheme{Simple}
+\usetheme{Envelope}		%	<--
+%	\usetheme{Wave}
+%	\usetheme{Board}		%	<--
+%	\usetheme{Autumn}
+%	\usetheme{Desert}
+
+%	\usecolorpalette
+%	\usecolorpalette{Default}
+%	\usecolorpalette{BlueGrayOrange}
+%	\usecolorpalette{GreenGrayViolet}
+%	\usecolorpalette{DPurpleGrayBlue}
+%	\usecolorpalette{DBrownBlueOrange}
+
+%	\usecolorstyle
+%	\usecolorstyle{Default}
+%	\usecolorstyle{Australia}	% <--
+\usecolorstyle{Britain}		% <--
+%	\usecolorstyle{Sweden}
+%	\usecolorstyle{Spain}
+%	\usecolorstyle{Russia}
+%	\usecolorstyle{Denmark}
+%	\usecolorstyle{Germany}
+
+\begin{document}
+	% Title block redimensioned due to length of the title
+	\maketitle[width=0.9\textwidth]
+
+	% Approach and achievements
+	%	\begin{columns}
+	%	\column{1}
+
+	% General problem introduction
+	\block{General Problem}
+	{
+		Performing diagnosis on a complex system requires at least an efficient
+		and accurate model of the system itself, which can then be used to
+		run simulations useful to collect data for diagnosis.
+		The problem is that running simulations on such high fidelity models
+		requires time and high performance resources, which cannot always be
+		available.
+		For this reason we want to generate a simple model of the complex system
+		based only on real data, provided by the system itself, and then use it
+		to perform our analysis.
+		From such simple model we will be able to retrieve all information of
+		the system requried to perform fault diagnosis on it.
+
+		\begin{center}
+			\includegraphics[width=0.75\textwidth]{./Images/3tanks.png}
+		\end{center}
+	}
+
+		
+	% FIRST column
+	%	\column{0.6}% Width set relative to text width
+	%	\block{Large Column}{Text\\Text\\Text Text Text}
+	%	\note{Note with default behavior}
+	%	\note[targetoffsetx=12cm, targetoffsety=-1cm, angle=20, rotate=25]
+	%	{Note \\ offset and rotated}
+	%	
+	%	% First column - second block
+	%	\block{Block titles with enough text will automatically obey spacing requirements }
+	%	{Text\\Text}
+	%	
+	%	% First column - third block
+	%	\block{Sample Block 4}{T\\E\\S\\T}
+	%	
+	%	% SECOND column
+	%	\column{0.4}
+	%	%Second column with first block’s top edge aligned with with previous column’s top.
+	%	
+	%	% Second column - first block
+	%	\block[titleleft]{Smaller Column}{Test}
+	%	
+	%	% Second column - second block
+	%	\block[titlewidthscale=0.6, bodywidthscale=0.8]
+	%	{Variable width title}{Block with smaller width.}
+	%	
+	%	% Second column - third block
+	%	\block{}{Block with no title}
+	%	
+	%	% Second column - A collection of blocks in subcolumn environment.
+	%	\begin{subcolumns}
+	%		\subcolumn{0.27} \block{1}{First block.} \block{2}{Second block}
+	%		
+	%		\subcolumn{0.4} \block{Sub-columns}{Sample subblocks\\Second subcolumn}
+	%		
+	%		\subcolumn{0.33} \block{4}{Fourth} \block{}{Final Subcolumn block}
+	%	\end{subcolumns}
+	%	
+	%	% Bottomblock
+	%	\block{Final Block in column}{
+	%		Sample block.
+	%	}
+
+	%	\column{0.6}
+
+	% Approach block
+	\block{Approach}
+	{
+		Our goal is to create a framework able to create a diagnoser of the
+		system under observation, only providing the data of its behaviour,
+		either correct or faulty. \\
+		
+		% Cute paging of the steps to follow
+		\begin{minipage}[t]{0.43\textwidth}
+			\begin{center}
+				\textbf{\textit{Model generation}}
+			\end{center}
+			The data driven model creation can be done using different
+			approaches, from polynomial approaches to machine learning methods.
+			The selection of the appropriate model to use will be done through
+			an optimization problem based on \emph{Accuracy} and
+			\emph{Computational Costs} of each model.
+			$$ J(\cdot) = \alpha\ Accuracy(\cdot) + \beta\ Computational\ Cost(\cdot) $$
+		\end{minipage}
+		%%
+		\hspace{15mm}
+		%%
+		\begin{minipage}[t]{0.43\textwidth}
+			\begin{center}
+				\textbf{\textit{Diagnosis}}
+			\end{center}
+			In respect to the error classification and recognition, a Neural
+			Network or a series of Support Vector Machines will be implemeted to
+			deal with the errors in the system behaviour.
+		\end{minipage}
+	}
+
+	% Achievements block
+	\block{Achievements}
+	{
+		Currently we are able to generate a linear model from the data of a
+		high-fidelity model.
+		Such model, or \emph{Corrective model}, properly approximates the
+		behaviour of the high-fidelity model in every scenario separatedly, will
+		that either be a normal or faulty behaviour.  
+		The purpose of this corrective model has been extended to a more general
+		scenario and tries to generate the best model which can predict how to
+		behave in each possible faulty situation.
+
+		\begin{center}
+			\includegraphics[width=0.75\textwidth]{./Images/Corrective_functions.png}
+		\end{center}
+	}
+
+	% Next steps block
+	\block{Next steps}
+	{
+		We are now trying to incorporate some basic machine learning concepts to
+		our framework for the model generation, which will lead us to find which
+		model is best to be used for a particular problem.
+	}
+
+	%\end{columns}
+	
+	%	\block[titleleft, titleoffsetx=2em, titleoffsety=1em, bodyoffsetx=2em,%
+	%	bodyoffsety=-2cm, roundedcorners=10, linewidth=0mm, titlewidthscale=0.7,%
+	%	bodywidthscale=0.9, bodyverticalshift=2cm, titleright]
+	%	{Block outside of Columns}{Along with several options enabled}
+
+\end{document}

@@ -1,0 +1,55 @@
+- GENERAL PROBLEM
+	(Computational challenge of inference with large systems)
+	[Data-driven diagnosis of faults in complex systems]
+	Performing diagnosis on a complex system requires at least an efficient and
+	accurate model of the system itself, which can then be used to run
+	simulations useful to collect data which can be analyzed for our diagnosis
+	purpose.
+	The problem is that running simulations on such high fidelity models
+	requires time and high performance resources, which cannot always be
+	available.
+	For this reason we want to generate a simple model of the complex system
+	based only on real data, provided by the system itself, and then use it to
+	perform our analysis.
+	From such simple model we will be able to retrieve all information of the
+	system requried to perform fault diagnosis on it.
+
+- APPROACH
+	(Select model optimising J)
+	[]
+	Our goal is to create a framework able to create a diagnoser of the system
+	under observation, providing only the data of its behaviour, either correct
+	or faulty.
+	In order to achieve our purpose we require different intermediate steps:
+	 - simple model generation
+	 - error classification and recognition
+	The data driven model creation can be done using different approaches, from
+	polynomial approaches to learning methods.
+	An issue related to this part is to decide which approach is better to use
+	depending on the type of system that we are analyzing. For this reason, an
+	optimization problem will be generated to decide which method will be used,
+	based on a trade-off between accuracy and computational cost of the model.
+		J(~) = alpha * Accuracy(~) + beta * Computational_Cost(~)
+	On the other hand, in respect to the error classification and recognition, 
+	a Neural Network or a series of Support Vector Machines will be implemeted
+	to deal with the errors in the system behaviour.
+
+- ACHIEVEMENTS
+	(Polynomial approximation)
+	[Polynomial all purpose real time corrective function]
+	Currently we are able to generate a linear model from the data of a
+	high-fidelity model.
+	Such model, or corrective model, properly approximates the behaviour of the
+	high-fidelity model in every scenario separatedly, will that either be a
+	normal or faulty behaviour.
+	The purpose of this corrective model has been extended to a more general
+	scenario and tries to generate the best model which can predict how to
+	behave in possible faulty situations.
+
+- NEXT STEPS
+	(Machine Learning)
+	[Machine Learning and stuff]
+	We are now trying to incorporate some basic machine learning concepts to
+	our framework for the model generation, which will lead us to find which
+	model is best to be used for a particular problem.
+

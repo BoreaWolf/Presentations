@@ -1,0 +1,26 @@
+# Folders
+Images_source/*
+
+# Zip files
+**/*.zip
+
+# Temporary files
+**/*.swp
+
+# Tex files
+**/*~
+**/*.o
+**/*.class
+**/*.dvi
+**/*.aux
+**/*.log
+**/*.nav
+**/*.snm
+**/*.toc
+**/*.out
+**/*.pd
+**/*.vrb
+
+# Images source
+**/*.xcf
+
