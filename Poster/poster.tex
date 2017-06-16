@@ -1,5 +1,6 @@
 % Options for format can be included here
-\documentclass[a0paper]{tikzposter}
+\documentclass{tikzposter}
+\geometry{paperwidth=841mm,paperheight=1205mm}
 
 \usepackage[english]{babel}
 
@@ -81,8 +82,12 @@
 		For this reason we want to generate a simple model of the complex system
 		based only on real data, provided by the system itself, and then use it
 		to perform our analysis.
-		From such simple model we will be able to retrieve all information of
+		From such simple models we will be able to retrieve all information of
 		the system requried to perform fault diagnosis on it.
+		The data driven approach has attracted attention in the last years
+		proving that it is an efficient tool to use in these scenarios, but
+		other methods are still used, such as hierarchical models and reduced
+		models.
 
 		\begin{center}
 			\includegraphics[width=0.75\textwidth]{./Images/3tanks.png}
@@ -126,12 +131,12 @@
 	{
 		Currently we are able to generate a linear model from the data of a
 		high-fidelity model.
-		Such model, or \emph{Corrective model}, properly approximates the
-		behaviour of the high-fidelity model in every scenario separatedly, will
+		Such models, or \emph{Corrective models}, properly approximate the
+		behaviour of the high-fidelity models in each scenario separatedly, will
 		that either be a normal or faulty behaviour.  
-		The purpose of this corrective model has been extended to a more general
-		scenario and tries to generate the best model which can predict how to
-		behave in each possible faulty situation.
+		The purpose of these corrective models have been extended to a more
+		general scenario and try to generate the best models which can predict
+		how to behave in each possible faulty situation.
 
 		\begin{center}
 			\includegraphics[width=0.75\textwidth]{./Images/Corrective_functions.png}
