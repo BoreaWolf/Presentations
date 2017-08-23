@@ -1,0 +1,57 @@
+/*
+ * Author: Riccardo Orizio
+ * Date: Mon 14 Aug 2017 
+ * Description: Content for the Lero poster
+ *
+ */
+
+
+- Task simulation
+- Forward simulation
+- Backward simulation
+- Diagnosis
+- Models combination
+
+
+* Abstract
+The research is aimed to build a diagnosis framework for complex systems
+starting from some of its real data and various information about its real
+application.
+We make use of the data, usually gathered through sensors that are part of the
+system itself, in order to extract a simpler model of the complex system under
+study.
+This new model will be used for two main reasons.
+First of all, it allows to run further simulations to train and refine the model
+itself in regions that are hard to model and, moreover, it can be used to
+predict how our model should behave in the future.
+For each relevant mode of the system we are able to extract a behavioural model
+of it and reuse it to make diagnosis.
+
+* Modes
+An operative mode of the system is defined by its initial conditions and its
+current active state. For each significant mode we can extract a model and use
+it to both predict the evolution of the system and to make diagnosis.
+The former is basic forward simulation: given a particular mathematical model,
+predict it and then check if it was correct.
+The latter is more complex to achieve and is based on the backward simulation
+concept: given a simulation, or after running one, study its results trying to
+understand if there are some discrepancies between the predicted values and the
+expected values and, if there are any, reverse the simulation process
+identifying which mode generated such values.
+This concept can then be extended to a more realistic case where more modes are
+active at the same time: this translates to a model composition that our
+diagnoser needs to be able to identify, either with machine learning or
+statistical approaches.
+
+* Achievements
+Currently we are able to extract polynomial models of data from different
+modes of the three tanks model system, taken as our complex system example.
+We can also generate some simple corrective models for each faulty scenario
+with the objective of minimizing the mean squared error between it and the
+normal behaviour scenario.
+
+* Future research directions 
+ - Single modes recognition, which will lead to a basic diagnoser.
+ - Modes combinations and consecutive diagnoser upgrade through machine learning
+ and/or statistical methods.
+
