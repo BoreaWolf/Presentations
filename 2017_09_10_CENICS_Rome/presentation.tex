@@ -97,13 +97,13 @@
 
 \begin{frame}{Contributions}
 	\begin{enumerate}
-		\item \alert<+>{Method for distinguishing attacks from faults on an
+		\item \alert<+>{Method for distinguishing attacks from faults in an
 			observed-based framework.}
 
 		\itemizespace
 
 		\item \alert<+>{Physics-based methods can be effective, but they cannot
-			deal with every kind of attacks on the system.}
+			deal with every kind of attack.}
 
 		\itemizespace
 
@@ -132,8 +132,8 @@
 
 \begin{frame}{Preliminaries}
     \begin{itemize}
-		\item \alert<+>{We assume that a CPS model is an instance of a hybrid
-			system which can operate on different behaviours, called modes.
+		\item \alert<+>{CPS model is an instance of a hybrid
+			system, which can operate in different behaviours, called modes.
 			\[
 				Modes:	\begin{cases}
 							y_{m_1} = g_1(x)	\\
@@ -145,8 +145,12 @@
 
 		\itemizespace
 
-		\item \alert<+>{i.e. a drone has many operating modes: take-off,
-			landing, wandering, surface mapping, ...}
+		\item \alert<+>{e.g. a drone has many operating modes 	
+			\begin{itemize}
+			\item take-off,
+			landing, wandering, surface mapping, ...
+			\end{itemize}
+			}
 
 		\itemizespace
 
@@ -176,7 +180,11 @@
 			\]
 
 			\[
-				\frac{\delta {h_i}}{\delta t} = \frac{k_{i-1} sign(h_{i-1}, h_i) \sqrt{|h_{i-1}-h_i|}-k_i \sqrt{h_i}}{A_1} 
+				\frac{\delta {h_2}}{\delta t} = \frac{k_{1} sign(h_{1}, h_2) \sqrt{|h_{1}-h_2|}-k_2 \sqrt{h_2}}{A_2}
+			\]
+
+			\[
+				\frac{\delta {h_3}}{\delta t} = \frac{k_{2} sign(h_{2}, h_3) \sqrt{|h_{2}-h_3|}-k_3 \sqrt{h_3}}{A_3} 
 			\]
 
 		}
@@ -194,54 +202,6 @@
 		}
 	\end{itemize}
 
-\end{frame}
-
-\begin{frame}{Faults Model}
-
-	\begin{itemize}
-		\item \alert<+>{Valve faults, leaks, sensor faults, etc..}
-
-		\itemizespace
-
-		\item \alert<+>
-		{
-			Additive model:
-			\[
-				v_i =	\begin{cases}
-							\max\{0, v_i + \Delta_{v_i}\}, & \mbox{if } \Delta_{v_i} \leq 0 \\
-							\min\{1, v_i + \Delta_{v_i}\}, & \mbox{if } \Delta_{v_i} > 0 \\
-						\end{cases}
-			\]
-			where $\Delta_{v_i} \in [-1,1]$
-
-		}
-
-		
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Attacks Model}
-
-	\begin{itemize}
-		\item \alert<+>{The attacker cannot monitor the system, only data
-			injection.}
-
-		\itemizespace
-
-		\item \alert<+>
-		{
-			\textbf{Sensor:} fake sensor reading in $[0,p_{i}^{max}]$ \\
-			%	The system may be altered if the control system responds to the change.
-		}
-
-		\itemizespace
-
-		\item \alert<+>
-		{
-			\textbf{Actuator:} fake actuator position in $[0,1]$ \\
-			%	The system is always affected.
-		}
-    \end{itemize}
 \end{frame}
 
 \begin{frame}{Control Model}
@@ -309,6 +269,59 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Fault Model}
+
+	\begin{itemize}
+		\item \alert<+>{Valve faults, leaks, sensor faults, etc..}
+		\item \alert<+>{Valve setting: $V_i \in [0,1]$
+				\begin{itemize}
+					\item $V_i=0$ is closed; $V_i=1$ is open 
+					\end{itemize}
+		}
+
+		\itemizespace
+
+		\item \alert<+>
+		{
+			Additive model:
+			\[
+				v_i =	\begin{cases}
+							\max\{0, v_i + \Delta_{v_i}\}, & \mbox{if } \Delta_{v_i} \leq 0 \\
+							\min\{1, v_i + \Delta_{v_i}\}, & \mbox{if } \Delta_{v_i} > 0 \\
+						\end{cases}
+			\]
+			where $\Delta_{v_i} \in [-1,1]$
+
+		}
+
+		
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Attacks Model}
+
+	\begin{itemize}
+		\item \alert<+>{The attacker cannot monitor the system, only data
+			injection.}
+
+		\itemizespace
+
+		\item \alert<+>
+		{
+			\textbf{Sensor:} fake sensor reading in $[0,p_{i}^{max}]$ \\
+			%	The system may be altered if the control system responds to the change.
+		}
+
+		\itemizespace
+
+		\item \alert<+>
+		{
+			\textbf{Actuator:} fake actuator position in $[0,1]$ \\
+			%	The system is always affected.
+		}
+    \end{itemize}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Fault or Attack}
@@ -317,7 +330,7 @@
 	\begin{itemize}
 		\item \alert<+>
 		{
-			Our system runs over different modes, each of which have a physical
+			Our system runs over different modes, each of which has a physical
 			model $\psi_i$, creating the behaviour $\xi_i$ having measurement
 			$\hat{y_i}$.
 		}
@@ -375,7 +388,7 @@
 
 		\item \alert<+>
 		{
-			Experiments environment:
+			Experimental environment:
 			\begin{itemize}
 				\item[-]{Time domain: $[0,50]$ seconds}
 
@@ -385,7 +398,7 @@
 
 				\itemizespace
 					
-				\item[-]{Not faulty setting: $v_1=v_2=v_3=0.5$}
+				\item[-]{Nominal setting: $v_1=v_2=v_3=0.5$}
 			\end{itemize}
 		}
 	\end{itemize}
@@ -510,7 +523,7 @@
 		\item \alert<+>
 		{
 			Distinguishing attacks from faults is difficult when the system has
-			a small number of sensors.
+			few sensors.
 		}
 
 		\itemizespace
@@ -519,13 +532,19 @@
 		{
 			Future work
 			\begin{itemize}
-				\item[] Deeper studies on the synergies of the system and
-					between sensors data.
-				\item[] Optimize the number of sensors in the system.
+				\item Deeper studies on the synergies of the system and
+					between sensors' data.
+				\item Optimize the number of sensors in the system.
 			\end{itemize}
 		}
 
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\includegraphics[height=0.6\textheight]{thank-you}
+	\end{figure}
 \end{frame}
 
 \end{document}
